@@ -1,6 +1,27 @@
 function findFirstDuplicate(arr) {
-  // type your code here
-
+//   for (let external = 0; external < arr.length; external++) {
+//     for (let internal = external + 1; internal < arr.length; internal++) {
+//       if (arr[external] === arr[internal]) {
+//         return arr[external];
+//       }
+//     }
+//     return -1;
+// }
+  // for(let i = 0; i< arr.length; i++) {
+  //   if(arr.lastIndexOf(arr[i]) !== i) {
+  //     return arr[i];
+  //   }
+  // }
+  // return -1;
+  let data = [];
+  for (dup of arr) {
+    if (data[dup]) {
+      return dup;
+    } else {
+      data[dup] = dup;
+    }
+  }
+  return -1
 }
 
 if (require.main === module) {
@@ -8,7 +29,8 @@ if (require.main === module) {
   console.log("Expecting: 3");
   console.log("=>", findFirstDuplicate([2, 1, 3, 3, 2]));
 
-  console.log("");
+  console.log("Expecting: 4");
+  console.log("=>", findFirstDuplicate([4, 1, 4, 1, 2, 6]));
 
   console.log("Expecting: -1");
   console.log("=>", findFirstDuplicate([1, 2, 3, 4]));
@@ -36,5 +58,4 @@ module.exports = findFirstDuplicate;
 //     } else {
 //       // otherwise, add the value to the set
 //       set.add(arr[i]);
-//     }
-//   }
+//     
